@@ -1,19 +1,20 @@
 #!/bin/ksh
 
 version="0.1"
-usage="pfanchors [show|load|flush] anchor
-                 [list]"
+usage='usage: pfanchors [show|load|flush] anchor 
+                 [list] [help] [version]'
 
-# We defined a valid list of anchors
+# defined a valid list of anchors
 anchors=`pfctl -a '*' -sr | grep anchor | cut -d'"' -f2 | tr '\n' ' '`
 set -A anchorlist $anchors
 
+# no arg print usage
 if [ ! $1 ]; then
-	echo $usage
+	echo "$usage"
 	exit 0
 fi
 
-# Arg 1
+# arg 1
 case $1 in
 	show)
 	show="YES"
@@ -28,7 +29,7 @@ case $1 in
 	list="YES"
 	;;
 	help)
-	echo $usage
+	echo "$usage"
 	exit 0
 	;;
 	version)
@@ -37,7 +38,7 @@ case $1 in
 	;;
 	*)
 	echo "error: unkown argument $1"
-	echo $usage
+	echo "$usage"
 	exit 1
 	;;
 esac
@@ -81,6 +82,5 @@ elif [ $list ]; then
 		listCount=$listCount+1
 	done	
 fi
-
 
 exit 0
