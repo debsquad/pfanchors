@@ -3,6 +3,7 @@
 version="0.1"
 usage='usage: pfanchors [show|load|flush] anchor 
                  [list] [help] [version]'
+$confdir="/etc/pf"
 
 # defined a valid list of anchors
 anchors=`pfctl -a '*' -sr | grep anchor | cut -d'"' -f2 | tr '\n' ' '`
@@ -55,7 +56,7 @@ elif [ $load ]; then
 	while [ $listCount -lt $listLenght ]
 	do
 		if [ ${anchorlist[$listCount]} == $anchor ]; then
-			pfctl -a $anchor -f "/etc/pf/pf-${anchor}.conf"
+			pfctl -a $anchor -f "$confdir/pf-${anchor}.conf"
 			loaded=1
 			break
 		fi
