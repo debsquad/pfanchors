@@ -1,11 +1,17 @@
 #!/bin/ksh
 
 version="0.1"
-usage="pfanchors [show|load|flush] anchor"
+usage="pfanchors [show|load|flush] anchor
+                 [list]"
 
 # We defined a valid list of anchors
 anchors=`pfctl -a '*' -sr | grep anchor | cut -d'"' -f2 | tr '\n' ' '`
 set -A anchorlist $anchors
+
+if [ ! $1 ]; then
+	echo $usage
+	exit 0
+fi
 
 # Arg 1
 case $1 in
