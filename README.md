@@ -20,7 +20,7 @@ At least one option must be specified. the options are as follow:
 
 	load <anchor>
 		Load filter rules inside the anchor ``anchor''
-		(default: stored inside _/etc/pf-anchor.conf_)
+		(default: stored inside /etc/pf-anchor.conf)
 
 	flush <anchor>
 		Flush all filter rules inside the anchor ``anchor''
