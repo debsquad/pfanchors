@@ -15,14 +15,14 @@ the variable _$confdir_ to fit your needs.
 
 At least one option must be specified. the options are as follow:
 
-	show \<anchor\>
+	show <anchor>
 		Show all filter rules inside the anchor ``anchor''
 
-	load \<anchor\>
+	load <anchor>
 		Load filter rules inside the anchor ``anchor''
-		(default: stored inside /etc/pf-anchor.conf)
+		(default: stored inside _/etc/pf-anchor.conf_)
 
-	flush \<anchor\>
+	flush <anchor>
 		Flush all filter rules inside the anchor ``anchor''
 
 	list
