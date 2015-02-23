@@ -6,7 +6,7 @@ pfanchors [show|load|flush] anchor
           [list] [help] [version]
 
 ## DESCRIPTION
-The pfanchors utility uses pfctl(8) to control and manage the
+The pfanchors utility uses [pfctl(8)](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man8/pfctl.8) to control and manage the
 packet filter (PF) anchors.
 
 pfanchors implies that anchor config files are conventionally
