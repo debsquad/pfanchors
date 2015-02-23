@@ -1,21 +1,19 @@
 #!/bin/ksh
 
-version="0.1"
+version="0.2"
 usage='usage: pfanchors [show|load|flush] anchor 
                  [list] [help] [version]'
-$confdir="/etc/pf"
 
-# defined a valid list of anchors
+# We defined a valid list of anchors
 anchors=`pfctl -a '*' -sr | grep anchor | cut -d'"' -f2 | tr '\n' ' '`
 set -A anchorlist $anchors
 
-# no arg print usage
 if [ ! $1 ]; then
 	echo "$usage"
 	exit 0
 fi
 
-# arg 1
+# Arg 1
 case $1 in
 	show)
 	show="YES"
@@ -30,7 +28,7 @@ case $1 in
 	list="YES"
 	;;
 	help)
-	echo "$usage"
+	echo $usage
 	exit 0
 	;;
 	version)
@@ -39,7 +37,7 @@ case $1 in
 	;;
 	*)
 	echo "error: unkown argument $1"
-	echo "$usage"
+	echo $usage
 	exit 1
 	;;
 esac
@@ -56,12 +54,12 @@ elif [ $load ]; then
 	while [ $listCount -lt $listLenght ]
 	do
 		if [ ${anchorlist[$listCount]} == $anchor ]; then
-			pfctl -a $anchor -f "$confdir/pf-${anchor}.conf"
+			pfctl -a $anchor -f "/etc/pf/anchors/${anchor}.conf"
 			loaded=1
 			break
 		fi
 		listCount=$listCount+1
-	done	
+	done
 	if [ ! $loaded ]; then
 		echo "error: no anchor named $anchor"
 		exit 1
@@ -83,5 +81,6 @@ elif [ $list ]; then
 		listCount=$listCount+1
 	done	
 fi
+
 
 exit 0

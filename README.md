@@ -9,9 +9,9 @@ pfanchors [show|load|flush] anchor
 The pfanchors utility uses [pfctl(8)](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man8/pfctl.8) to control and manage the
 packet filter (PF) anchors.
 
-pfanchors implies that anchor config files are conventionally
-named _pf-$anchor.conf_ and stored in _/etc/pf/_. Feel free to modify
-the variable _$confdir_ to fit your needs.
+pfanchors implies that each anchor config files is conventionally
+named _$anchor.conf_ and stored in _/etc/pf/anchors/_. Feel free to modify
+this path to fit your needs.
 
 At least one option must be specified. the options are as follow:
 
@@ -20,7 +20,6 @@ At least one option must be specified. the options are as follow:
 
 	load <anchor>
 		Load filter rules inside the anchor ``anchor''
-		(default: stored inside /etc/pf-anchor.conf)
 
 	flush <anchor>
 		Flush all filter rules inside the anchor ``anchor''
